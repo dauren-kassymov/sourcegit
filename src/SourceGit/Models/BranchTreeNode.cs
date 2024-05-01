@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Avalonia.Collections;
 
@@ -89,6 +90,37 @@ namespace SourceGit.Models
 
                 SortNodes(_locals);
                 SortNodes(_remotes);
+                
+                var mains = new List<string> { "dev", "main", "master" };
+                foreach (string name in mains)
+                {
+                    MoveToTop(name, _locals);
+                }
+                
+                Branch currentBranch = branches.FirstOrDefault(x => x.IsCurrent);
+                _locals.Insert(0, new BranchTreeNode
+                {
+                    Name = currentBranch.Name,
+                    Backend = currentBranch,
+                    IsFiltered = false,
+                    IsExpanded = false,
+                    Type = BranchTreeNodeType.Branch
+                });
+            }
+
+            private void MoveToTop(string name, List<BranchTreeNode> nodes)
+            {
+                if (!nodes.Any())
+                {
+                    return;
+                }
+                int index = nodes.FindIndex(x => x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+                if (index != -1)
+                {
+                    var temp = nodes[index];
+                    nodes.RemoveAt(index);
+                    nodes.Insert(0, temp);
+                }
             }
 
             public void SetFilters(AvaloniaList<string> filters)
