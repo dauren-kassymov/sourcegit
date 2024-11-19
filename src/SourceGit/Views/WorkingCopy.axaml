@@ -11,7 +11,7 @@
              x:DataType="vm:WorkingCopy">
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="300" MinWidth="300"/>
+      <ColumnDefinition Width="300" MinWidth="20"/>
       <ColumnDefinition Width="5"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
