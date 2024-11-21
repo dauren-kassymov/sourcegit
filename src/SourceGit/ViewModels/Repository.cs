@@ -107,6 +107,13 @@ namespace SourceGit.ViewModels
             get => _localBranchTrees;
             private set => SetProperty(ref _localBranchTrees, value);
         }
+        
+        [JsonIgnore]
+        public string LocalBranchTreesFilterCount
+        {
+            get => _localBranchTreesFilterCount;
+            private set => SetProperty(ref _localBranchTreesFilterCount, value);
+        }
 
         [JsonIgnore]
         public List<Models.BranchTreeNode> RemoteBranchTrees
@@ -535,11 +542,36 @@ namespace SourceGit.ViewModels
                 Remotes = remotes;
                 Branches = branches;
                 LocalBranchTrees = builder.Locals;
+                UpdateFiliterCount();
                 RemoteBranchTrees = builder.Remotes;
 
                 var cur = Branches.Find(x => x.IsCurrent);
                 CanCommitWithPush = cur != null && !string.IsNullOrEmpty(cur.Upstream);
             });
+        }
+
+        private void UpdateFiliterCount()
+        {
+            int BranchCount(List<Models.BranchTreeNode> list)
+            {
+                var res = 0;
+                foreach (var node in list)
+                {
+                    if (node.IsBranch)
+                    {
+                        res += node.IsFiltered ? 1 : 0;
+                    }
+                    else if (node.IsFolder)
+                    {
+                        res += BranchCount(node.Children);
+                    }
+                }
+
+                return res;
+            }
+
+            int count = BranchCount(LocalBranchTrees);
+            LocalBranchTreesFilterCount = $"{count}/{Branches.Count}";
         }
 
         public void RefreshTags()
@@ -585,6 +617,7 @@ namespace SourceGit.ViewModels
                 {
                     _histories.IsLoading = false;
                     _histories.Commits = commits;
+                    UpdateFiliterCount();
                 }
             });
         }
@@ -1287,6 +1320,7 @@ namespace SourceGit.ViewModels
         private List<Models.Remote> _remotes = new List<Models.Remote>();
         private List<Models.Branch> _branches = new List<Models.Branch>();
         private List<Models.BranchTreeNode> _localBranchTrees = new List<Models.BranchTreeNode>();
+        private string _localBranchTreesFilterCount = string.Empty;
         private List<Models.BranchTreeNode> _remoteBranchTrees = new List<Models.BranchTreeNode>();
         private List<Models.Tag> _tags = new List<Models.Tag>();
         private List<string> _submodules = new List<string>();

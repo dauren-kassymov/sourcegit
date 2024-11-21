@@ -98,14 +98,18 @@ namespace SourceGit.Models
                 }
                 
                 Branch currentBranch = branches.FirstOrDefault(x => x.IsCurrent);
-                _locals.Insert(0, new BranchTreeNode
+                if (!mains.Contains(currentBranch.Name))
                 {
-                    Name = currentBranch.Name,
-                    Backend = currentBranch,
-                    IsFiltered = false,
-                    IsExpanded = false,
-                    Type = BranchTreeNodeType.Branch
-                });
+                    _locals.Insert(0,
+                        new BranchTreeNode
+                        {
+                            Name = currentBranch.Name,
+                            Backend = currentBranch,
+                            IsFiltered = false,
+                            IsExpanded = false,
+                            Type = BranchTreeNodeType.Branch
+                        });
+                }
             }
 
             private void MoveToTop(string name, List<BranchTreeNode> nodes)

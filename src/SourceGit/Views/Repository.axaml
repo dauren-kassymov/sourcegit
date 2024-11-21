@@ -191,9 +191,13 @@
         </ListBox>
 
         <!-- Local Branches -->
-        <TextBlock
-          Grid.Row="2" Classes="group_header_label"
-          Text="{DynamicResource Text.Repository.LocalBranches}" />
+        <Grid Row="2" ColumnDefinitions="*,Auto">
+          <TextBlock
+            Grid.Column="0" Classes="group_header_label"
+            Text="{DynamicResource Text.Repository.LocalBranches}" />
+          <TextBlock Grid.Column="1" Classes="group_header_label" 
+            Text="{Binding LocalBranchTreesFilterCount}"/>
+        </Grid>
         <TreeView
           Grid.Row="3" x:Name="localBranchTree" MaxHeight="400"
           ItemsSource="{Binding LocalBranchTrees}"
