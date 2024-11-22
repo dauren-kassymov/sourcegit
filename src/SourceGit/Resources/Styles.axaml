@@ -881,8 +881,8 @@
       <ControlTemplate>
         <Path Grid.Column="0"
 					  x:Name="PART_IndicatorIcon"
-					  Width="12"
-					  Data="{StaticResource Icons.Filter}"
+					  
+					  Data="{StaticResource Icons.Triangle}"
 					  Fill="Transparent"
 					  StrokeThickness="1"
 					  Stroke="{DynamicResource Brush.FG2}"
@@ -894,10 +894,29 @@
     <Setter Property="RenderTransform" Value="scale(1)"/>
   </Style>
   <Style Selector="ToggleButton.filter:checked /template/ Path#PART_IndicatorIcon">
-    <Setter Property="Fill" Value="{DynamicResource Brush.FG2}"/>
+    <Setter Property="Fill" Value="{DynamicResource Brush.Fg4}"/>
   </Style>
   <Style Selector="ToggleButton.filter:pointerover /template/ Path#PART_IndicatorIcon">
     <Setter Property="Stroke" Value="{DynamicResource Brush.Accent2}"/>
+  </Style>
+  <Style Selector="ToggleButton.eye_hide">
+    <Setter Property="Margin" Value="0"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Path Grid.Column="0"
+              x:Name="PART_IndicatorIcon"
+              Width="20"
+              Data="{StaticResource Icons.Triangle}"
+              Fill="Transparent"
+              StrokeThickness="1"
+              Stroke="{DynamicResource Brush.FG2}"
+              HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </ControlTemplate>
+    </Setter>
   </Style>
   <Style Selector="ToggleButton.tree_expander">
     <Setter Property="Margin" Value="0" />

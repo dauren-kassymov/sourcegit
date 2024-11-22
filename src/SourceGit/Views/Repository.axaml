@@ -261,12 +261,13 @@
 
                 <ToggleButton Grid.Column="3"
                               Classes="filter"
-                              Margin="0,0,8,0"
+                              Margin="2"
                               Background="Transparent"
-                              IsVisible="{Binding IsBranch}"
                               Checked="OnToggleFilter"
                               Unchecked="OnToggleFilter"
-                              IsChecked="{Binding IsFiltered}" />
+                              IsVisible="{Binding IsBranch}"
+                              IsChecked="{Binding IsFiltered}" >
+                </ToggleButton>
               </Grid>
             </TreeDataTemplate>
           </TreeView.ItemTemplate>
