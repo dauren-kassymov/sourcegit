@@ -93,6 +93,7 @@ namespace SourceGit.Commands
             try
             {
                 proc.Start();
+                Console.WriteLine("git logs: {0}", proc.StartInfo.Arguments);
             }
             catch (Exception e)
             {

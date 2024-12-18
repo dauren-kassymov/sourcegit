@@ -7,6 +7,7 @@
         xmlns:v="using:SourceGit.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SourceGit.Views.GitLogs"
+        x:DataType="vm:GitLogs"
         Title="Logs"
         Background="Transparent"
         Width="800" Height="450"
@@ -34,13 +35,9 @@
               BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Brush.Border0}"
               PointerPressed="BeginMoveWindow" />
 
-      <Path Grid.Column="0"
-            Width="14" Height="14"
-            Margin="10,0,0,0"
-            Data="{StaticResource Icons.Statistics}"
-            IsVisible="{OnPlatform True, macOS=False}" />
-
-      <Grid Grid.Column="0" Classes="caption_button_box" Margin="2,4,0,0" IsVisible="{OnPlatform False, macOS=True}">
+      <Grid Grid.Column="0" Classes="caption_button_box" 
+            Margin="2,4,0,0" 
+            IsVisible="{OnPlatform False, macOS=True}">
         <Button Classes="caption_button_macos" Click="CloseWindow">
           <Grid>
             <Ellipse Fill="{DynamicResource Brush.MacOS.Close}" />

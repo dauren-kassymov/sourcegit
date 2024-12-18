@@ -296,7 +296,7 @@ namespace SourceGit.Views
         {
             if (DataContext is ViewModels.Repository repo)
             {
-                var dialog = new GitLogs() { };
+                var dialog = new GitLogs() { DataContext = new ViewModels.GitLogs() };
                 await dialog.ShowDialog(TopLevel.GetTopLevel(this) as Window);
                 e.Handled = true;
             }
