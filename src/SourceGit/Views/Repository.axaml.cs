@@ -291,5 +291,15 @@ namespace SourceGit.Views
                 e.Handled = true;
             }
         }
+        
+        private async void OpenGiLogs(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ViewModels.Repository repo)
+            {
+                var dialog = new GitLogs() { };
+                await dialog.ShowDialog(TopLevel.GetTopLevel(this) as Window);
+                e.Handled = true;
+            }
+        }
     }
 }

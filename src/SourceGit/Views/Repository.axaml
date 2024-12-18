@@ -101,14 +101,23 @@
         </StackPanel>
 
         <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,4,0">
-          <ToggleButton Classes="layout_direction"
-                        Width="32" Height="26"
-                        IsChecked="{Binding Source={x:Static vm:Preference.Instance}, Path=UseTwoColumnsLayoutInHistories, Mode=TwoWay}"
-                        IsVisible="{Binding SelectedViewIndex, Converter={x:Static c:IntConverters.IsZero}}"
-                        ToolTip.Tip="{DynamicResource Text.Histories.DisplayMode}" />
+          <Button
+            Classes="icon_button" Width="32" Click="OpenGiLogs"
+            ToolTip.Tip="logs">
+            <Path Width="14" Height="14" Data="{StaticResource Icons.LightbulbCircleRegular}" />
+          </Button>
 
-          <Button Classes="icon_button" Width="32" Command="{Binding Cleanup}"
-                  ToolTip.Tip="{DynamicResource Text.Repository.Clean}">
+          <ToggleButton
+            Classes="layout_direction"
+            Width="32" Height="26"
+            IsChecked="{Binding Source={x:Static vm:Preference.Instance}, Path=UseTwoColumnsLayoutInHistories, Mode=TwoWay}"
+            IsVisible="{Binding SelectedViewIndex, Converter={x:Static c:IntConverters.IsZero}}"
+            ToolTip.Tip="{DynamicResource Text.Histories.DisplayMode}" />
+
+          <Button
+            Classes="icon_button" Width="32"
+            Command="{Binding Cleanup}"
+            ToolTip.Tip="{DynamicResource Text.Repository.Clean}">
             <Path Width="14" Height="14" Data="{StaticResource Icons.Clean}" />
           </Button>
 
@@ -195,8 +204,8 @@
           <TextBlock
             Grid.Column="0" Classes="group_header_label"
             Text="{DynamicResource Text.Repository.LocalBranches}" />
-          <TextBlock Grid.Column="1" Classes="group_header_label" 
-            Text="{Binding LocalBranchTreesFilterCount}"/>
+          <TextBlock Grid.Column="1" Classes="group_header_label"
+                     Text="{Binding LocalBranchTreesFilterCount}" />
         </Grid>
         <TreeView
           Grid.Row="3" x:Name="localBranchTree" MaxHeight="400"
@@ -266,7 +275,7 @@
                               Checked="OnToggleFilter"
                               Unchecked="OnToggleFilter"
                               IsVisible="{Binding IsBranch}"
-                              IsChecked="{Binding IsFiltered}" >
+                              IsChecked="{Binding IsFiltered}">
                 </ToggleButton>
               </Grid>
             </TreeDataTemplate>
