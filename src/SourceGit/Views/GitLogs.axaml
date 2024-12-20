@@ -35,8 +35,8 @@
               BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Brush.Border0}"
               PointerPressed="BeginMoveWindow" />
 
-      <Grid Grid.Column="0" Classes="caption_button_box" 
-            Margin="2,4,0,0" 
+      <Grid Grid.Column="0" Classes="caption_button_box"
+            Margin="2,4,0,0"
             IsVisible="{OnPlatform False, macOS=True}">
         <Button Classes="caption_button_macos" Click="CloseWindow">
           <Grid>
@@ -59,6 +59,24 @@
               IsVisible="{OnPlatform True, macOS=False}">
         <Path Data="{StaticResource Icons.Window.Close}" />
       </Button>
+    </Grid>
+
+    <!-- Logs Content -->
+    <Grid Grid.Row="1" Margin="12">
+      <DataGrid ItemsSource="{Binding Logs}"
+                AutoGenerateColumns="False"
+                CanUserSortColumns="True"
+                IsReadOnly="True"
+                GridLinesVisibility="Horizontal">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Date"
+                              Binding="{Binding Date}"
+                              Width="150" />
+          <DataGridTextColumn Header="Message"
+                              Binding="{Binding Message}"
+                              Width="*" />
+        </DataGrid.Columns>
+      </DataGrid>
     </Grid>
   </Grid>
 </Window>
