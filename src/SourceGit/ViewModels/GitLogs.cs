@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 using SourceGit.Models;
 
@@ -16,7 +18,8 @@ namespace SourceGit.ViewModels
         public GitLogs()
         {
             Logs = new ObservableCollection<GitLog>();
-            foreach (var log in Services.GitLogsList.Logs)
+            
+            foreach (var log in Services.GitLogsList.Logs.OrderByDescending(x => x.DateTime))
             {
                 Logs.Add(log);
             }

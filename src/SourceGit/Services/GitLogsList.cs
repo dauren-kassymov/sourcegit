@@ -7,7 +7,7 @@ namespace SourceGit.Services
     public static class GitLogsList
     {
         private static readonly List<GitLog> _logs = new();
-        private const int MAX_LOGS = 20;
+        private const int MAX_LOGS = 100;
 
         public static IReadOnlyList<GitLog> Logs => _logs.AsReadOnly();
 

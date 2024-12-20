@@ -12,7 +12,7 @@
         Background="Transparent"
         Width="800" Height="450"
         WindowStartupLocation="CenterOwner"
-        CanResize="False"
+        CanResize="True"
         ExtendClientAreaToDecorationsHint="True"
         ExtendClientAreaChromeHints="NoChrome"
         SystemDecorations="{OnPlatform Full, Linux=None}">
@@ -67,11 +67,17 @@
                 AutoGenerateColumns="False"
                 CanUserSortColumns="True"
                 IsReadOnly="True"
-                GridLinesVisibility="Horizontal">
+                GridLinesVisibility="Horizontal"
+                HorizontalScrollBarVisibility="Auto">
+        <DataGrid.Styles>
+          <Style Selector="TextBlock">
+            <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+          </Style>
+        </DataGrid.Styles>
         <DataGrid.Columns>
           <DataGridTextColumn Header="Date"
-                              Binding="{Binding DateTime}"
-                              Width="150" />
+                              Binding="{Binding DateTime, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"
+                              Width="Auto" />
           <DataGridTextColumn Header="Message"
                               Binding="{Binding Message}"
                               Width="*" />
