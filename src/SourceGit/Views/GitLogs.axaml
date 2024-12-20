@@ -68,7 +68,8 @@
                 CanUserSortColumns="True"
                 IsReadOnly="True"
                 GridLinesVisibility="Horizontal"
-                HorizontalScrollBarVisibility="Auto">
+                HorizontalScrollBarVisibility="Auto"
+                DoubleTapped="OnGridDoubleTapped">
         <DataGrid.Styles>
           <Style Selector="TextBlock">
             <Setter Property="TextWrapping" Value="WrapWithOverflow" />
