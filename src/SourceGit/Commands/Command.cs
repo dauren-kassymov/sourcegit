@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 using Avalonia.Threading;
 
+using SourceGit.Services;
+
 namespace SourceGit.Commands
 {
     public partial class Command
@@ -93,6 +95,7 @@ namespace SourceGit.Commands
             try
             {
                 proc.Start();
+                GitLogsList.AddLog($"git {start.Arguments}");
                 Console.WriteLine("git logs: {0}", proc.StartInfo.Arguments);
             }
             catch (Exception e)
@@ -149,6 +152,7 @@ namespace SourceGit.Commands
             try
             {
                 proc.Start();
+                GitLogsList.AddLog($"git {start.Arguments}");
             }
             catch (Exception e)
             {

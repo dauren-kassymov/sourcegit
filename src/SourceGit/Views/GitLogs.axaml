@@ -70,7 +70,7 @@
                 GridLinesVisibility="Horizontal">
         <DataGrid.Columns>
           <DataGridTextColumn Header="Date"
-                              Binding="{Binding Date}"
+                              Binding="{Binding DateTime}"
                               Width="150" />
           <DataGridTextColumn Header="Message"
                               Binding="{Binding Message}"
