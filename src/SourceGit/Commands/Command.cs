@@ -96,7 +96,6 @@ namespace SourceGit.Commands
             {
                 proc.Start();
                 GitLogsList.AddLog($"git {start.Arguments}");
-                Console.WriteLine("git logs: {0}", proc.StartInfo.Arguments);
             }
             catch (Exception e)
             {

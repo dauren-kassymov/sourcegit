@@ -137,6 +137,13 @@ namespace SourceGit.Views
                         e.Handled = true;
                         return;
                     }
+                    else if (e.Key == Key.A)
+                    {
+                        Console.WriteLine("Ctrl+A pressed");
+                        repo.CimmitAllAndPush();
+                        e.Handled = true;
+                        return;
+                    }
                 }
             }
             else if (e.Key == Key.Escape)

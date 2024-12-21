@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Avalonia.Collections;
@@ -1328,5 +1329,21 @@ namespace SourceGit.ViewModels
         private bool _hasUnsolvedConflict = false;
         private bool _canCommitWithPush = false;
         private bool _includeUntracked = true;
+
+        public void CimmitAllAndPush()
+        {
+            if (SelectedView is ViewModels.WorkingCopy wcVm)
+            {
+                Console.WriteLine("CimmitAllAndPush");
+
+                wcVm.StageChanges(wcVm.Unstaged);
+                Console.WriteLine($"stage count {wcVm.Staged.Count}");
+                if (wcVm.Staged.Count > 0)
+                {
+                    wcVm.CommitMessage = $"WIP: {DateTime.Now:HH:mm:ss zz}";
+                    wcVm.DoCommit(true);
+                }
+            }
+        }
     }
 }
