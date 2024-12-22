@@ -1334,7 +1334,7 @@ namespace SourceGit.ViewModels
         {
             if (SelectedView is ViewModels.WorkingCopy wcVm)
             {
-                Console.WriteLine("CimmitAllAndPush");
+                Console.WriteLine("CimmitAllAndPush ");
 
                 wcVm.StageChanges(wcVm.Unstaged);
                 Console.WriteLine($"stage count {wcVm.Staged.Count}");
