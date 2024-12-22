@@ -1340,7 +1340,7 @@ namespace SourceGit.ViewModels
                 Console.WriteLine($"stage count {wcVm.Staged.Count}");
                 if (wcVm.Staged.Count > 0)
                 {
-                    wcVm.CommitMessage = $"WIP: {DateTime.Now:HH:mm:ss zz}";
+                    wcVm.CommitMessage = $"WIP: {DateTime.Now:HH:mm:ss}";
                     wcVm.DoCommit(true);
                 }
             }
