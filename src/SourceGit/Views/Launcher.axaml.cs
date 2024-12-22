@@ -137,12 +137,6 @@ namespace SourceGit.Views
                         e.Handled = true;
                         return;
                     }
-                    else if (e.Key == Key.A)
-                    {
-                        repo.CommitAllAndPush();
-                        e.Handled = true;
-                        return;
-                    }
                 }
             }
             else if (e.Key == Key.Escape)

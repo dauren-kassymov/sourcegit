@@ -74,6 +74,12 @@
                   ToolTip.Tip="{DynamicResource Text.Push}">
             <Path Width="14" Height="14" Data="{StaticResource Icons.Push}" />
           </Button>
+          
+          <Button Classes="icon_button" Width="32" Margin="16,0,0,0" Command="{Binding CommitAllAndPush}"
+                  HotKey="Ctrl+S"
+                  ToolTip.Tip="WIP: commit and push (Ctrl+S)">
+            <Path Width="14" Height="14" Data="{StaticResource Icons.Check}" />
+          </Button>
 
           <Button Classes="icon_button" Width="32" Margin="16,0,0,0" Command="{Binding StashAll}"
                   ToolTip.Tip="{DynamicResource Text.Stashes}">
