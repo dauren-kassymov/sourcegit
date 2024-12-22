@@ -1330,7 +1330,7 @@ namespace SourceGit.ViewModels
         private bool _canCommitWithPush = false;
         private bool _includeUntracked = true;
 
-        public void CimmitAllAndPush()
+        public void CommitAllAndPush()
         {
             if (SelectedView is ViewModels.WorkingCopy wcVm)
             {

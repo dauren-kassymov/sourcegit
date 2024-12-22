@@ -140,7 +140,7 @@ namespace SourceGit.Views
                     else if (e.Key == Key.A)
                     {
                         Console.WriteLine("Ctrl+A pressed");
-                        repo.CimmitAllAndPush();
+                        repo.CommitAllAndPush();
                         e.Handled = true;
                         return;
                     }
