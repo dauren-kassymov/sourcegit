@@ -1332,7 +1332,7 @@ namespace SourceGit.ViewModels
 
         public void CommitAllAndPush()
         {
-            if (SelectedView is ViewModels.WorkingCopy wcVm)
+            if (SelectedView is WorkingCopy wcVm)
             {
                 if (wcVm.Unstaged.Count > 0)
                 {
