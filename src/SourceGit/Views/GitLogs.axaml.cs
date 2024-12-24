@@ -30,6 +30,7 @@ namespace SourceGit.Views
             if (e.Source is TextBlock textBlock && 
                 textBlock.DataContext is GitLog log)
             {
+                // Copy the message to clipboard
                 Clipboard?.SetTextAsync(log.Message);
             }
         }

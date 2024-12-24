@@ -1334,10 +1334,13 @@ namespace SourceGit.ViewModels
         {
             if (SelectedView is ViewModels.WorkingCopy wcVm)
             {
-                wcVm.StageChanges(wcVm.Unstaged);
-                if (wcVm.Staged.Count > 0 && wcVm.Unstaged.Count == 0)
+                if (wcVm.Unstaged.Count > 0)
                 {
-                    wcVm.CommitMessage = $"WIP: {DateTime.Now:HH:mm:ss}";
+                    wcVm.StageChanges(wcVm.Unstaged);
+                }
+                else if (wcVm.Staged.Count > 0 && wcVm.Unstaged.Count == 0)
+                {
+                    wcVm.CommitMessage = $"WIP: {DateTime.Now:HH:mm:ss} {wcVm.CommitMessage}";
                     wcVm.DoCommit(true);
                 }
             }
